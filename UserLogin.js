@@ -2,6 +2,7 @@ import React from "react";
 import Welcome from "./Welcome";
 import styled from 'styled-components';
 import InputBox from "./inputBox";
+import Button from "./button";
 
 export default class UserLogin extends React.Component {
   constructor(props) {
@@ -53,7 +54,7 @@ export default class UserLogin extends React.Component {
           </MarginTop>
           <MarginTop>
             < AlignButton>
-              <button type="button" onClick={this.handleClick}>Login</button>
+              <Button type="submit" onClick={this.handleClick} />
             </AlignButton >
           </MarginTop >
           <LoginResults>{this.state.invalidFlag}</LoginResults>
