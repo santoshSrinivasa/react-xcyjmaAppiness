@@ -38,13 +38,6 @@ class UserLogin extends React.Component {
     if ((nameDefault == nameEntered) && (pwdDefault == pwdEntered)) {
       this.setState({ isloginValid: true });
       this.props.history.push("/searchOptions")
-      axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res => {
-        const persons = res.data;
-        console.log(persons);
-        this.setState({ persons });
-        this.props.searchUpdated(persons);
-      })
     } else {
       const invalid = "Invalid User login"
       this.setState({ invalidFlag: invalid })
@@ -74,20 +67,8 @@ class UserLogin extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    searchUpdated: (details) => dispatch({ type: 'LOGINDETAILS', searchvalue: details }),
-  }
 
-}
-function mapStateToProps(state) {
-  console.log(state);
-  return {
-    searchValueStore: state.details,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default UserLogin;
 
 const UserLoginContainer = styled.div`
     height: -webkit-fill-available;
