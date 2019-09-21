@@ -12,7 +12,6 @@ class PersonList extends React.Component {
 
   render() {
   const data = this.props.searchValueStore;
-  console.log(data);
   const columns = [
   {
     Header:'id',
@@ -57,7 +56,6 @@ class PersonList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return { 
   searchValueStore : state.details,
  };

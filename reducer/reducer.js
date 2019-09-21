@@ -4,8 +4,6 @@ const globalstate = {
 function reducer(state = globalstate, action) {
   switch (action.type) {
     case "LOGINDETAILS":
-      console.log("state is",state);
-      console.log("action-->", action.searchvalue);
       return {
       details : action.searchvalue
       }
