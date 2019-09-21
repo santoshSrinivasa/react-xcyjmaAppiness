@@ -15,8 +15,7 @@ class UserLogin extends React.Component {
       userNameEntered: "",
       passwordEntered: "",
       isloginValid: false,
-      invalidFlag: '',
-      persons:[],
+      invalidFlag: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
