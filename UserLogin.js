@@ -3,8 +3,10 @@ import Welcome from "./Welcome";
 import styled from 'styled-components';
 import InputBox from "./inputBox";
 import Button from "./button";
+import { connect } from "react-redux";
+import axios from "axios";
 
-export default class UserLogin extends React.Component {
+class UserLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +15,8 @@ export default class UserLogin extends React.Component {
       userNameEntered: "",
       passwordEntered: "",
       isloginValid: false,
-      invalidFlag: ''
+      invalidFlag: '',
+      persons:[],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -35,6 +38,13 @@ export default class UserLogin extends React.Component {
     if ((nameDefault == nameEntered) && (pwdDefault == pwdEntered)) {
       this.setState({ isloginValid: true });
       this.props.history.push("/searchOptions")
+      axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => {
+        const persons = res.data;
+        console.log(persons);
+        this.setState({ persons });
+        this.props.searchUpdated(persons);
+      })
     } else {
       const invalid = "Invalid User login"
       this.setState({ invalidFlag: invalid })
@@ -63,6 +73,21 @@ export default class UserLogin extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    searchUpdated: (details) => dispatch({ type: 'LOGINDETAILS', searchvalue: details }),
+  }
+
+}
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    searchValueStore: state.data.details,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
 
 const UserLoginContainer = styled.div`
     height: -webkit-fill-available;
