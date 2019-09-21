@@ -28,6 +28,26 @@ export default class PersonList extends React.Component {
     Header:'name',
     accessor:'name'
   },
+  {
+    Header:'username',
+    accessor:'username'
+  },
+  {
+    Header:'email',
+    accessor:'email'
+  },
+   {
+    Header:'street',
+    accessor:'address.street'
+  },
+  {
+    Header:'city',
+    accessor:'address.city'
+  },
+  {
+    Header:'zipcode',
+    accessor:'address.zipcode'
+  },
 ]
     return (
       <div>
