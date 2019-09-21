@@ -3,22 +3,16 @@ import {render} from "react-dom";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import axios from 'axios';
+import {connect} from "react-redux";
 
-export default class PersonList extends React.Component {
-  state = {
-    persons: []
-  }
-
-  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
-      })
+class PersonList extends React.Component {
+  constructor(props){
+    super(props);
   }
 
   render() {
-  const data=this.state.persons;
+  const data = this.props.searchValueStore;
+  console.log(data);
   const columns = [
   {
     Header:'id',
@@ -61,3 +55,13 @@ export default class PersonList extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  console.log(state);
+  return { 
+  searchValueStore : state.details,
+ };
+}
+
+
+export default connect(mapStateToProps)(PersonList);

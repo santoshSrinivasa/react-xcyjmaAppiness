@@ -83,7 +83,7 @@ const mapDispatchToProps = dispatch => {
 function mapStateToProps(state) {
   console.log(state);
   return {
-    searchValueStore: state.data.details,
+    searchValueStore: state.details,
   };
 }
 
