@@ -1,3 +1,15 @@
 h1, p {
   font-family: Lato;
 }
+
+.marginUsername{
+  margin-left:10px;
+}
+
+.marginPwd{
+  margin-left:17px;
+}
+
+.margin{
+  margin: 10px
+}
